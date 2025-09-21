@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Download - SecureWipe</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="logo">SecureWipe</a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="#features">Features</a>
+        <a href="download.html" class="active">Download</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Download Section -->
+  <section class="download-section">
+    <div class="container">
+      <h1>SecureWipe Downloads</h1>
+      <p>Select your operating system to download the software</p>
+
+      <div class="download-cards">
+        <div class="card">
+          <img src="windows.png" alt="Windows" />
+          <h3>Windows</h3>
+          <a href="files/SecureWipe_Windows.exe" class="btn btn-blue" onclick="showThankYou(event)">Download</a>
+        </div>
+        <div class="card">
+          <img src="linux.png" alt="Linux" />
+          <h3>Linux</h3>
+          <a href="files/SecureWipe_Linux.deb" class="btn btn-blue" onclick="showThankYou(event)">Download</a>
+        </div>
+        <div class="card">
+          <img src="android.png" alt="Android" />
+          <h3>Android</h3>
+          <a href="files/SecureWipe_Android.apk" class="btn btn-blue" onclick="showThankYou(event)">Download</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <small>© 2025 SecureWipe • Safe & Secure</small>
+    </div>
+  </footer>
+
+  <script>
+  function showThankYou(event) {
+    event.preventDefault(); // Stop immediate download
+    const fileUrl = event.currentTarget.getAttribute('href');
+
+    // Open thank you page
+    window.location.href = "thankyou.html";
+
+    // Trigger download in background after 500ms
+    setTimeout(() => {
+      const link = document.createElement('a');
+      link.href = fileUrl;
+      link.download = '';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }, 500);
+  }
+  </script>
+</body>
+</html>
